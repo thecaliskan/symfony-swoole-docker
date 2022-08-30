@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if test -f "/var/www/crontab"; then
+  /usr/bin/crontab /var/www/crontab
+  echo Enabled Cron!
+else
+  rm /etc/supervisor.d/app-cron.ini
+fi
+
+
+echo Starting Swoole!
+/usr/bin/supervisord -n -c /etc/supervisord.conf
